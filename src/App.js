@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import React from 'react';
 
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {CreateApp} from './components/createApp';
 import {Home} from './components/home';
 
 import './App.css';
@@ -17,10 +18,12 @@ class App extends React.Component {
             <Navbar.Brand>AppDrawer</Navbar.Brand>
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/create-app">Add app</Nav.Link>
             </Nav>
           </Navbar>
           <Switch>
             <Route exact path="/" component={Home}></Route>
+            <Route exact path="/create-app" component={CreateApp}></Route>
           </Switch>
         </div>
       </BrowserRouter>
