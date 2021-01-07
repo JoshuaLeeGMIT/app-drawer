@@ -41,7 +41,7 @@ mongoose.connect(server, {
 
 /* Handle DELETE for dotfiles. */
 app.delete('/api/dotfiles/:id', function(req, res) {
-  appModel.deleteOne({_id: req.params.id}, function(e, data) {
+  dotfileModel.deleteOne({_id: req.params.id}, function(e, data) {
     if (e)
       res.send(e);
     else /* Don't send the data if there was an error. */
@@ -51,7 +51,7 @@ app.delete('/api/dotfiles/:id', function(req, res) {
 
 /* Handle PUT for dotfiles. */
 app.put('api/dotfiles', (req, res) => {
-  appModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, data) => {
+  dotfileModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, data) => {
     res.send(data);
   })
 })
@@ -59,7 +59,7 @@ app.put('api/dotfiles', (req, res) => {
 /* Handle POST from front end. */
 app.post('/api/dotfiles', (req, res) => {
   /* Create document on server. */
-  appModel.create({
+  dotfileModel.create({
     name: req.body.name,
     text: req.body.text
   });
@@ -67,21 +67,21 @@ app.post('/api/dotfiles', (req, res) => {
 
 /* Send back dotfile JSON data on ID search. */
 app.get('/api/dotfiles/:id', (req, res) => {
-  appModel.findById(req.params.id, (data) => {
+  dotfileModel.findById(req.params.id, (data) => {
     res.json(data);
   });
 })
 
 /* Send back JSON API on GET from front end for dotfiles. */
 app.get('/api/dotfiles', (req, res) => {
-  appModel.find((err, data) => {
+  dotfileModel.find((err, data) => {
     res.json(data);
   });
 })
 
 /* Handle deleting of dotfile documents on server. */
 app.delete('/api/dotfiles/:id', function(req, res) {
-  appModel.deleteOne({_id: req.params.id}, function(e, data) {
+  dotfileModel.deleteOne({_id: req.params.id}, function(e, data) {
     if (e)
       res.send(e);
     else /* Don't send the data if there was an error. */
@@ -91,7 +91,7 @@ app.delete('/api/dotfiles/:id', function(req, res) {
 
 /* Handle PUT for dotfiles. */
 app.put('api/dotfiles', (req, res) => {
-  appModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, data) => {
+  dotfileModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, data) => {
     res.send(data);
   })
 })
