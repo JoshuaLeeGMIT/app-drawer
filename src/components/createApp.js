@@ -12,6 +12,7 @@ export class CreateApp extends React.Component {
   constructor() {
     super();
 
+    this.onSubmit = this.onSubmit.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDescr = this.onChangeDescr.bind(this);
     this.onChangeIcon = this.onChangeIcon.bind(this);
