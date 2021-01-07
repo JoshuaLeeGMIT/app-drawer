@@ -81,7 +81,7 @@ export class CreateApp extends React.Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>App description</Form.Label>
-              <Form.Control as="textarea" rows={3} value={this.state.descr} onChange={this.onChangeDescr}></Form.Control>
+              <Form.Control as="textarea" rows={4} value={this.state.descr} onChange={this.onChangeDescr}></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>Icon URL</Form.Label>
