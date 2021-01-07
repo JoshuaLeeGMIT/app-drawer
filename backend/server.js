@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const port = 4000;
+const path = require('path');
 const server = "mongodb+srv://root:root@cluster0.vj971.mongodb.net/app-drawer?retryWrites=true&w=majority"
 
 /* Define the app and dotfile schema for sever. */
@@ -12,10 +13,17 @@ var appSchema = new mongoose.Schema({
   descr: String,
   icob: String,
   url: String
+},
+{
+  /* Specify which collection. */
+  collection: 'apps'
 });
 var dotfileSchema = new mongoose.Schema({
   name: String,
   text: String
+},
+{
+  collection: 'dotfiles'
 });
 /* Define models. */
 var appModel = mongoose.model("apps", appSchema);
@@ -31,6 +39,9 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+/* Hook up build folder. */
+app.use(express.static(path.join(__dirname, '/../build')));
+app.use('/static', express.static(path.join(__dirname, '/build/static')));
 
 /* Connect to database. */
 mongoose.connect(server, {
@@ -119,6 +130,10 @@ app.get('/api/apps', (req, res) => {
   appModel.find((err, data) => {
     res.json(data);
   });
+})
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../build/index.html'));
 })
 
 app.listen(port, () => {
