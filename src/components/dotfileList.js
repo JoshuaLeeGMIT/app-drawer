@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -11,17 +12,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class DotfileList extends React.Component {
 
+  /* Object's state. */
   state = {
-    dotfiles: [
-      {
-        "name": ".bashrc",
-        "text": ""
-      },
-      {
-        "name": ".vimrc",
-        "text": ""
-      }
-    ]
+    dotfiles: []
+  }
+
+  constructor() {
+    super();
+    this.reloadPage = this.reloadPage.bind(this);
+  }
+
+  reloadPage() {
+    axios.get("http://localhost:4000/api/dotfiles").then((response) => {
+      this.setState({dotfiles: response.data.dotfiles})
+    }).catch((e) => {
+      console.log(e);
+    });
+  }
+
+  /* Implement lifecycle hook. */
+  componentDidMount() {
+    /* Make a GET request to fill object's state. */
+    axios.get("http://localhost:4000/api/dotfiles").then((response) => {
+      this.setState({dotfiles: response.data})
+    }).catch((e) => {
+      console.log(e);
+    });
   }
 
   render() {
