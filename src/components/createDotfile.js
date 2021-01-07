@@ -42,7 +42,7 @@ export class CreateDotfile extends React.Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>Dotfile text</Form.Label>
-              <Form.Control as="textarea" rows={8} value={this.state.descr} onChange={this.onChangeDescr}></Form.Control>
+              <Form.Control as="textarea" rows={8} value={this.state.descr} onChange={this.onChangeText}></Form.Control>
             </Form.Group>
           </form>
         </Container>
