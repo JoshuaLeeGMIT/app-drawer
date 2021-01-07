@@ -66,6 +66,7 @@ export class CreateApp extends React.Component {
     .catch((e) => {
       console.log(e);
     });
+  }
 
   render() {
     return (
