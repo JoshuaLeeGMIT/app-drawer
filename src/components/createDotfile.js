@@ -32,6 +32,23 @@ export class CreateDotfile extends React.Component {
     });
   }
 
+  onSubmit(event) {
+    /* Create object from state to send to server. */
+    let data = {
+      name: this.state.name,
+      text: this.state.text
+    };
+
+    event.preventDefault();
+
+    /* Make POST request to server. */
+    axios.post('http://localhost:4000/api/dotfiles', data).then((res) => {
+      console.log(res);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+
   render() {
     return (
       <div className="App">

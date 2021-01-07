@@ -48,6 +48,25 @@ export class CreateApp extends React.Component {
     });
   }
 
+  onSubmit(event) {
+    /* Create object from state to send to server. */
+    let data = {
+      name: this.state.name,
+      descr: this.state.descr,
+      icon: this.state.icon,
+      url: this.state.url
+    };
+
+    event.preventDefault();
+
+    /* Make POST request to server. */
+    axios.post('http://localhost:4000/api/apps', data).then((res) => {
+      console.log(res);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+
   render() {
     return (
       <div className="App">
