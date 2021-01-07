@@ -14,7 +14,7 @@ export class CreateDotfile extends React.Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
-    this.onChangeDescr = this.onChangeText.bind(this);
+    this.onChangeText = this.onChangeText.bind(this);
 
     this.state = {
       name: "",
