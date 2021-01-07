@@ -13,21 +13,9 @@ var appSchema = new mongoose.Schema({
   descr: String,
   icob: String,
   url: String
-},
-{
-  /* Specify which collection. */
-  collection: 'apps'
-});
-var dotfileSchema = new mongoose.Schema({
-  name: String,
-  text: String
-},
-{
-  collection: 'dotfiles'
 });
 /* Define models. */
 var appModel = mongoose.model("apps", appSchema);
-var dotfileModel = mongoose.model("dotfiles", dotfileSchema);
 
 /* Set up cors and body-parser. */
 app.use(bodyParser.urlencoded({extended: false}));
@@ -49,63 +37,6 @@ mongoose.connect(server, {
   /* Silence deprecation warning. */
   useUnifiedTopology: true
 });
-
-/* Handle DELETE for dotfiles. */
-app.delete('/api/dotfiles/:id', function(req, res) {
-  dotfileModel.deleteOne({_id: req.params.id}, function(e, data) {
-    if (e)
-      res.send(e);
-    else /* Don't send the data if there was an error. */
-      res.send(data);
-  });
-})
-
-/* Handle PUT for dotfiles. */
-app.put('api/dotfiles', (req, res) => {
-  dotfileModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, data) => {
-    res.send(data);
-  })
-})
-
-/* Handle POST from front end. */
-app.post('/api/dotfiles', (req, res) => {
-  /* Create document on server. */
-  dotfileModel.create({
-    name: req.body.name,
-    text: req.body.text
-  });
-})
-
-/* Send back dotfile JSON data on ID search. */
-app.get('/api/dotfiles/:id', (req, res) => {
-  dotfileModel.findById(req.params.id, (data) => {
-    res.json(data);
-  });
-})
-
-/* Send back JSON API on GET from front end for dotfiles. */
-app.get('/api/dotfiles', (req, res) => {
-  dotfileModel.find((err, data) => {
-    res.json(data);
-  });
-})
-
-/* Handle deleting of dotfile documents on server. */
-app.delete('/api/dotfiles/:id', function(req, res) {
-  dotfileModel.deleteOne({_id: req.params.id}, function(e, data) {
-    if (e)
-      res.send(e);
-    else /* Don't send the data if there was an error. */
-      res.send(data);
-  });
-})
-
-/* Handle PUT for dotfiles. */
-app.put('api/dotfiles', (req, res) => {
-  dotfileModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, data) => {
-    res.send(data);
-  })
-})
 
 /* Handle POST from front end for apps. */
 app.post('/api/apps', (req, res) => {
