@@ -115,4 +115,3 @@ export class EditApp extends React.Component {
     )
   }
 }
-}
