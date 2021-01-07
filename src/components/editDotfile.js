@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/Button';
 import React from 'react';
 
 import '../App.css';
@@ -79,6 +80,7 @@ export class EditDotfile extends React.Component {
               <Form.Label>Dotfile text</Form.Label>
               <Form.Control as="textarea" rows={8} value={this.state.descr} onChange={this.onChangeText}></Form.Control>
             </Form.Group>
+            <Button variant="primary" type="submit">Update dotfile</Button>
           </form>
         </Container>
       </div>

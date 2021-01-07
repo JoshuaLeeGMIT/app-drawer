@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import React from 'react';
@@ -44,6 +45,7 @@ export class CreateDotfile extends React.Component {
               <Form.Label>Dotfile text</Form.Label>
               <Form.Control as="textarea" rows={8} value={this.state.descr} onChange={this.onChangeText}></Form.Control>
             </Form.Group>
+            <Button variant="primary" type="submit">Add dotfile</Button>
           </form>
         </Container>
       </div>

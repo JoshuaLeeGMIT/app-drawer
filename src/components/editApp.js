@@ -1,7 +1,9 @@
+import Button from 'react-bootstrap/Button';
 import React from 'react';
 
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form } from 'react-bootstrap';
 
 export class EditApp extends React.Component {
 
@@ -109,6 +111,7 @@ export class EditApp extends React.Component {
               <Form.Label>Download link</Form.Label>
               <Form.Control type="text" value={this.state.url} onChange={this.onChangeURL}></Form.Control>
             </Form.Group>
+            <Button variant="primary" type="submit">Update app</Button>
           </form>
         </Container>
       </div>

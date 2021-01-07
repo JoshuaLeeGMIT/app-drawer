@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import React from 'react';
@@ -68,6 +69,7 @@ export class CreateApp extends React.Component {
               <Form.Label>Download link</Form.Label>
               <Form.Control type="text" value={this.state.url} onChange={this.onChangeURL}></Form.Control>
             </Form.Group>
+            <Button variant="primary" type="submit">Add app</Button>
           </form>
         </Container>
       </div>
