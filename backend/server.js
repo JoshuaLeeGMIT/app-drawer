@@ -38,6 +38,23 @@ mongoose.connect(server, {
   useUnifiedTopology: true
 });
 
+/* Handle DELETE. */
+app.delete('/api/apps/:id', function(req, res) {
+  appModel.deleteOne({_id: req.params.id}, function(e, data) {
+    if (e)
+      res.send(e);
+    else /* Don't send the data if there was an error. */
+      res.send(data);
+  });
+})
+
+/* Handle PUT from edits. */
+app.put('/api/apps', (req, res) => {
+  appModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, data) => {
+    res.send(data);
+  })
+})
+
 /* Handle POST from front end for apps. */
 app.post('/api/apps', (req, res) => {
   /* Create document on server. */
