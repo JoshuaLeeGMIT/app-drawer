@@ -40,7 +40,7 @@ export class CreateApp extends React.Component {
 
   onChangeIcon(e) {
     this.setState({
-      descr: e.target.value
+      icon: e.target.value
     });
   }
   
@@ -63,7 +63,7 @@ export class CreateApp extends React.Component {
 
     /* Make POST request to server. */
     axios.post('http://localhost:4000/api/apps', data).then((res) => {
-      console.log(res);
+      this.props.reloadPage();
     })
     .catch((e) => {
       console.log(e);
