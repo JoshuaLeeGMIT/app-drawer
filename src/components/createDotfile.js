@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -11,6 +12,7 @@ export class CreateDotfile extends React.Component {
   constructor() {
     super();
 
+    this.onSubmit = this.onSubmit.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDescr = this.onChangeText.bind(this);
 
