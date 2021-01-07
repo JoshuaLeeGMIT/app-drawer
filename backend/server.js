@@ -11,7 +11,7 @@ const server = "mongodb+srv://root:root@cluster0.vj971.mongodb.net/app-drawer?re
 var appSchema = new mongoose.Schema({
   name: String,
   descr: String,
-  icob: String,
+  icon: String,
   url: String
 });
 /* Define models. */
