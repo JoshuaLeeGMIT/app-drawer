@@ -17,7 +17,7 @@ export class EditDotfile extends React.Component {
     /* Initialise state. */
     this.state = {
       name: "",
-      eText: ""
+      text: ""
     };
   }
 
@@ -26,8 +26,8 @@ export class EditDotfile extends React.Component {
     axios.get('http://localhost:4000/apis/dotfiles/' + this.props.match.params.id).then(response => {
       this.setState({
         _id: response.data._id,
-        name: response.data.title,
-        text: response.data.year
+        name: response.data.name,
+        text: response.data.text
       })
     }).catch((e) => {
       console.log(e);
@@ -52,8 +52,8 @@ export class EditDotfile extends React.Component {
     /* Create object from state to send to server. */
     let data = {
       _id: this.state._id,
-      name: this.state.Title,
-      text: this.state.Year
+      name: this.state.name,
+      text: this.state.text
     };
 
     event.preventDefault();
@@ -84,5 +84,4 @@ export class EditDotfile extends React.Component {
       </div>
     )
   }
-}
 }
