@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export class Home extends React.Component {
   render() {
     return (
-      <div class="App">
+      <div className="App">
         <Jumbotron>
           <h1>
             AppDrawer
