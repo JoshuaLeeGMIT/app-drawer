@@ -5,6 +5,7 @@ import React from 'react';
 import {AppGrid} from './components/appGrid';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {CreateApp} from './components/createApp';
+import {EditApp} from './components/editApp';
 import {Home} from './components/home';
 
 import './App.css';
@@ -27,6 +28,7 @@ class App extends React.Component {
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/browse" component={AppGrid}></Route>
             <Route exact path="/create" component={CreateApp}></Route>
+            <Route exact path="/edit:id" component={EditApp}></Route>
           </Switch>
         </div>
       </BrowserRouter>
